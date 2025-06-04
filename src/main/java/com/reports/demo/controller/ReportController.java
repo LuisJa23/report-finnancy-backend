@@ -80,4 +80,12 @@ public class ReportController {
         
         return debug;
     }
+
+    @GetMapping("/health")
+    public Map<String, String> health() {
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "UP");
+        response.put("timestamp", new Date().toString());
+        return response;
+    }
 }

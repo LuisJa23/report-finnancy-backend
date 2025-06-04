@@ -24,15 +24,17 @@ phases:
       - echo Build completed successfully
       
 artifacts:
-  # 1) base-directory: "target" → busca en target/ el JAR generado
-  base-directory: target
+  # 1) base-directory: "." → incluye archivos desde la raíz del proyecto
+  base-directory: "."
 
-  # 2) files: sólo incluye el (o los) .jar que haya en target/
+  # 2) files: incluye el JAR y archivos de configuración
   files:
-    - "*.jar"
+    - "target/*.jar"
+    - "Procfile"
+    - ".ebextensions/**/*"
 
-  # 3) discard-paths: yes → elimina cualquier carpeta y mete el JAR directamente en la raíz del ZIP
-  discard-paths: yes
+  # 3) discard-paths: no → mantiene la estructura de directorios
+  discard-paths: no
 
   # 4) name: así se llamará el ZIP que se suba a S3
   name: finnancy-backend-artifact.zip

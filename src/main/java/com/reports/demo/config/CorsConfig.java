@@ -14,10 +14,14 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("*") 
-                        .allowedOrigins("http://localhost:3000")
-                        .allowedMethods("*")
-                        .allowedHeaders("*");
+                        .allowedOrigins(
+                            "http://localhost:3000",
+                            "https://your-frontend-domain.com", // Reemplaza con tu dominio de frontend
+                            "*"
+                        )
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedHeaders("*")
+                        .allowCredentials(false);
             }
         };
     }
