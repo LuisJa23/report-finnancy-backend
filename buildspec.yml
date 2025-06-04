@@ -1,0 +1,38 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+    commands:
+      - echo Installing dependencies...
+      - mvn --version
+      
+  pre_build:
+    commands:
+      - echo Pre-build phase...
+      - mvn clean
+      
+  build:
+    commands:
+      - echo Building and packaging application...
+      - mvn compile
+      - mvn package -DskipTests
+      
+  post_build:
+    commands:
+      - echo Build completed successfully
+      
+artifacts:
+  # 1) base-directory: "target" → busca en target/ el JAR generado
+  base-directory: target
+
+  # 2) files: sólo incluye el (o los) .jar que haya en target/
+  files:
+    - "*.jar"
+
+  # 3) discard-paths: yes → elimina cualquier carpeta y mete el JAR directamente en la raíz del ZIP
+  discard-paths: yes
+
+  # 4) name: así se llamará el ZIP que se suba a S3
+  name: finnancy-backend-artifact.zip
