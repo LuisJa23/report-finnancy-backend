@@ -8,19 +8,10 @@ import org.springframework.data.convert.WritingConverter;
 import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
 import com.reports.demo.enums.ExpenseCategory;
 
-import jakarta.annotation.PostConstruct;
 import java.util.Arrays;
-import java.util.logging.Logger;
 
 @Configuration
 public class MongoConfig {
-    
-    private static final Logger logger = Logger.getLogger(MongoConfig.class.getName());
-    
-    @PostConstruct
-    public void init() {
-        logger.info("Initializing MongoDB configuration...");
-    }
 
     @Bean
     public MongoCustomConversions customConversions() {

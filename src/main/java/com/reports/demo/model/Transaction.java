@@ -4,7 +4,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Field;
+import com.reports.demo.enums.ExpenseType;
 import com.reports.demo.enums.ExpenseCategory;
+import com.reports.demo.enums.PaymentMethod;
 import com.reports.demo.enums.TransactionType;
 import java.time.LocalDateTime;
 
@@ -21,6 +23,8 @@ public class Transaction {
     private LocalDateTime date;           // Fecha de la transacción
     private String description;       // Descripción opcional
     private TransactionType type;      // INCOME/EXPENSE
+    private ExpenseType expenseType;   // FIXED/VARIABLE (solo para gastos)
+    private PaymentMethod paymentMethod; // Efectivo, tarjeta, transferencia
     private String userId;            // Usuario dueño de la transacción
     
     public String getId() {
@@ -76,6 +80,18 @@ public class Transaction {
     }
     public void setType(TransactionType type) {
         this.type = type;
+    }
+    public ExpenseType getExpenseType() {
+        return expenseType;
+    }
+    public void setExpenseType(ExpenseType expenseType) {
+        this.expenseType = expenseType;
+    }
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
+    }
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
     public String getUserId() {
         return userId;

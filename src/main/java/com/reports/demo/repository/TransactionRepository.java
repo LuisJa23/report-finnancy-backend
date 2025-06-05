@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.reports.demo.enums.PaymentMethod;
 import com.reports.demo.enums.TransactionType;
 import com.reports.demo.model.Transaction;
 
@@ -39,6 +40,9 @@ public interface TransactionRepository extends MongoRepository<Transaction, Stri
     // Encontrar transacciones por usuario, categoría y tipo
     List<Transaction> findByUserIdAndCategoryAndType(String userId, String category, TransactionType type);
     
+    // Encontrar transacciones por usuario y método de pago
+    List<Transaction> findByUserIdAndPaymentMethod(String userId, PaymentMethod paymentMethod);
+
     List<Transaction> findByUserId(String userId);
 
     // Nuevos métodos para reportes avanzados con LocalDateTime

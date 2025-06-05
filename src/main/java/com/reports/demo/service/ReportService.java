@@ -472,7 +472,6 @@ public class ReportService {
         Map<String, Object> result = new HashMap<>();
         result.put("totalIncome", totalIncome);
         result.put("totalExpense", totalExpense);
-        result.put("balance", totalIncome - totalExpense);
 
         return result;
     }
